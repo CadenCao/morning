@@ -90,4 +90,4 @@ color=get_random_color()
 data = {"weather":{"value":weather+'\n\n'},"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words, "color":color}}
 print(data)
 res = wm.send_template(user_id, template_id, data)
-print(res)
+print(res,'\n\n\n\n')
