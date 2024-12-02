@@ -53,7 +53,7 @@ def get_weather(code_city):
 def two_city_weather(code_city1,code_city2):
     tem_time1,res1= get_weather(code_city1)
     tem_time2,res2= get_weather(code_city2)
-    return tem_time1+res1+res2
+    return tem_time1
     return tem_time1+'\n'+res1+'\n\n'+res2
 
 
