@@ -7,7 +7,8 @@ import os
 import random
 
 today = datetime.now()
-start_date = os.environ['START_DATE']
+start_date = '2024-09-22 19:00:00'
+# start_date = os.environ['START_DATE']
 
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
@@ -48,8 +49,7 @@ def two_city_weather(code_city1,code_city2):
 
 
 def love_count():
-  print(start_date)
-  delta = today - datetime.strptime(start_date, "%Y-%m-%d")
+  delta = today - datetime.strptime(start_date, "%Y-%m-%d %H:%M:%S")
   return delta.days
 
 def get_birthday():
