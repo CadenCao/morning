@@ -99,7 +99,7 @@ words=get_words()
 # print(words)
 
 color=get_random_color()
-# print(color)
+print(love_days,birthday_left,words)
 
 data = {"weather":{"value":weather},"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words, "color":color}}
 
