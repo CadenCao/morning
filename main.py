@@ -24,7 +24,8 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 
 user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 # user_id = os.environ["USER_ID"]
-template_id = 'oU2WV7o8ssmNYIMP4ErOAqtsLYaIoJTsVM_eOkmVICM'
+template_id1 = 'ZtC9zan8wTC0WpAiVub47wryi9yxlEazqNHzPlgpUk8'
+template_id2 = 'kdHK7YLg7cXgq8dI7Uv_sWw2wKqEPsc0tDv9kxV5ENA'
 # template_id = os.environ["TEMPLATE_ID"]
 
 key='183ab5e8e01d6f3876be06ad207c7298'
@@ -53,7 +54,7 @@ def get_weather(code_city):
 def two_city_weather(code_city1,code_city2):
     tem_time1,res1= get_weather(code_city1)
     tem_time2,res2= get_weather(code_city2)
-    return tem_time1+res1+res2
+    # return tem_time1+res1+res2
     return tem_time1+'\n'+res1+'\n\n'+res2
 
 
@@ -75,12 +76,14 @@ def get_words():
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
-
-
+    
 client = WeChatClient(app_id, app_secret)
-
 wm = WeChatMessage(client)
 
+
+def send_measage(user_id,template_id,data):
+    res = wm.send_template(user_id, template_id, data)
+    print(data)
 
 code_city1 = ('440112','黄浦区')
 code_city2 = ('440106','天河区')
@@ -99,6 +102,7 @@ color=get_random_color()
 # print(color)
 
 data = {"weather":{"value":weather},"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words, "color":color}}
-print(data)
-res = wm.send_template(user_id, template_id, data)
-print(res,'\n\n\n\n')
+
+send_measage(user_id,template_id1,data)
+send_measage(user_id,template_id2,data)
+
