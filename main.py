@@ -24,7 +24,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 
 user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 # user_id = os.environ["USER_ID"]
-template_id = 'r_oALA5kF3fand3xr5thCgQrTE1W1CmDg9TNygOobvs'
+template_id = 'jv6_em_zp1nmXdMzcjnQplE7KDtSCa1GcjZHxIoAJW8'
 # template_id = os.environ["TEMPLATE_ID"]
 
 key='183ab5e8e01d6f3876be06ad207c7298'
@@ -53,6 +53,7 @@ def get_weather(code_city):
 def two_city_weather(code_city1,code_city2):
     tem_time1,res1= get_weather(code_city1)
     tem_time2,res2= get_weather(code_city2)
+    return tem_time1+res1+res2
     return tem_time1+'\n'+res1+'\n\n'+res2
 
 
@@ -97,7 +98,7 @@ words=get_words()
 color=get_random_color()
 # print(color)
 
-data = {"weather":{"value":weather+'\n\n'},"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words, "color":color}}
+data = {"weather":{"value":weather},"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words, "color":color}}
 print(data)
 res = wm.send_template(user_id, template_id, data)
 print(res,'\n\n\n\n')
