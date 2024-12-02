@@ -72,7 +72,7 @@ def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
   if words.status_code != 200:
     return get_words()
-  return words.json()['data']['text'].replace(' ','')
+  return words.json()['data']['text']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
@@ -101,7 +101,7 @@ words=get_words()
 color=get_random_color()
 print(love_days,birthday_left,words)
 
-data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words}}
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":get_words()}}
 
 send_measage(user_id,template_id1,data)
 # send_measage(user_id,template_id2,data)
