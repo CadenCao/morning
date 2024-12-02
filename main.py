@@ -48,7 +48,6 @@ def two_city_weather(code_city1,code_city2):
 
 
 def love_count():
-  print(today,start_date)
   delta = today - datetime.strptime(start_date, "%Y-%m-%d %H:%M:%S")
   return delta.days
 
