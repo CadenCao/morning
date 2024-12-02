@@ -69,6 +69,10 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
+
+
+code_city1 = ('440112','黄浦区')
+code_city2 = ('440106','天河区')
 weather= two_city_weather(code_city1,code_city2)
 
 love_days=love_count()
