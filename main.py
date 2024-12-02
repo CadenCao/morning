@@ -11,11 +11,14 @@ start_date = '2024-09-22 19:00:00'
 # start_date = os.environ['START_DATE']
 
 city = os.environ['CITY']
+print(city)
 birthday = '03-12'
 # birthday = os.environ['BIRTHDAY']
 
+app_id = os.environ["APP_ID"]
+print(app_id)
 app_id = 'wxfdda80846713c1ca'
-# app_id = os.environ["APP_ID"]
+
 app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 # app_secret = os.environ["APP_SECRET"]
 
