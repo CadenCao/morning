@@ -101,8 +101,8 @@ words=get_words()
 color=get_random_color()
 print(love_days,birthday_left,words)
 
-data = {"weather":{"value":weather},"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words, "color":color}}
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words,"color":color}}
 
 send_measage(user_id,template_id1,data)
-send_measage(user_id,template_id2,data)
+# send_measage(user_id,template_id2,data)
 
