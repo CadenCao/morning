@@ -14,11 +14,15 @@ city = os.environ['CITY']
 birthday = '03-12'
 # birthday = os.environ['BIRTHDAY']
 
-app_id = os.environ["APP_ID"]
-app_secret = os.environ["APP_SECRET"]
+app_id = 'wxfdda80846713c1ca'
+# app_id = os.environ["APP_ID"]
+app_secret = '1660ddba6b8258c445dc10bf44261cbd'
+# app_secret = os.environ["APP_SECRET"]
 
-user_id = os.environ["USER_ID"]
-template_id = os.environ["TEMPLATE_ID"]
+user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
+# user_id = os.environ["USER_ID"]
+template_id = 'CtDHpYsZ-mkWFe2sBxjgGaFIVzg4Nj61nIxj2bGgG2I'
+# template_id = os.environ["TEMPLATE_ID"]
 
 key='183ab5e8e01d6f3876be06ad207c7298'
 
