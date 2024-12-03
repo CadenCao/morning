@@ -8,6 +8,7 @@ import random
 
 today = datetime.now()
 start_date = '2024-09-22 19:00:00'
+meet_data='2024-08-31 20:13:00'
 # start_date = os.environ['START_DATE']
 
 city = os.environ['CITY']
@@ -25,7 +26,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 user_id1 = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 user_id2 = 'oZBrP6NmYGuREGxGPOykkETbmrbU'
 # user_id = os.environ["USER_ID"]
-template_id1 = 's8KrDTA-dqnRohOeSsKEzDnuCyMqH5GERAYEhwoQ4G8'
+template_id1 = 'nwvRU1a9ARhdbMYMV7vc5SZNmWLmzYo6H3UGR3rWUaU'
 template_id2 = '7wiwcBbLwAVSGJ8GftX5FFTt0mk4ufsqY0Sl-3vjBcs'
 # template_id = os.environ["TEMPLATE_ID"]
 
@@ -66,8 +67,13 @@ def two_city_weather(code_city1,code_city2):
     # return tem_time1+'\n'+res1+'\n\n'+res2
 
 def love_count():
-  delta = today - datetime.strptime(start_date, "%Y-%m-%d %H:%M:%S")
-  return delta.days
+  delta1 = today - datetime.strptime(start_date, "%Y-%m-%d %H:%M:%S")
+  days,hours,minutes =delta1.days,delta1.seconds // 3600,delta1.seconds % 3600 // 60
+  res1=f'{days}天{hours}时{minutes}分'
+  delta2 = today - datetime.strptime(meet_data, "%Y-%m-%d %H:%M:%S")
+  days,hours,minutes =delta2.days,delta2.seconds // 3600,delta2.seconds % 3600 // 60
+  res2=f'{days}天{hours}时{minutes}分'
+  return res1,res
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
@@ -116,7 +122,7 @@ def send_measage(user_id,template_id,data):
     res = wm.send_template(user_id, template_id, data)
     print(data)
 
-love_days=love_count()
+love_days,meet_days=love_count()
 
 birthday_left=get_birthday()
 
@@ -150,7 +156,7 @@ tips=get_tips(weather1,temperature1,humidity1)
 #         'tips':{"value":tips}
 #        }
 
-data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days}
         'city1':{"value":city1},'weather1':{"value":weather1},'temperature1':{"value":temperature1},
         'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
         'city1':{"value":city_forecasts1},'dayweather1':{"value":dayweather_forecasts1},
@@ -161,5 +167,5 @@ data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},
 
 
 send_measage(user_id1,template_id1,data)
-send_measage(user_id2,template_id1,data)
+# send_measage(user_id2,template_id1,data)
 
