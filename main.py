@@ -33,12 +33,12 @@ key='183ab5e8e01d6f3876be06ad207c7298'
 
 def get_weather(code_city):
     code,city=code_city
-    url = f"https://restapi.amap.com/v3/weather/weatherInfo?key={key}&city={code}&extensions=base"
+    url = f"https://restapi.amap.com/v3/weather/weatherInfo?key={key}&city={city}&extensions=base"
     res_get_base = requests.get(url).json()
     lives=res_get_base['lives'][0]
 
 
-    url = f"https://restapi.amap.com/v3/weather/weatherInfo?key={key}&city={code}&extensions=all"
+    url = f"https://restapi.amap.com/v3/weather/weatherInfo?key={key}&city={city}&extensions=all"
     res_get_forecast = requests.get(url).json()
     forecasts=res_get_forecast['forecasts'][0]
     
@@ -81,6 +81,29 @@ def get_words():
     return get_words()
   return words.json()['data']['text']
 
+def get_tips(weather1,temperature1,humidity1):
+    res=[]
+    if '雨'in weather1:
+        res_tem='宝宝，今天有雨哦，记得带伞，小心着凉。
+    else:
+        if temperature1>24:
+            res.append('宝宝，今天很暖和哦！')
+        elif 19<=temperature1<=24:
+            res.append('宝宝，今天很舒适哦！')
+        elif 15<temperature1<19:
+            res.append('宝宝，今天可能有点冷，多穿点衣服！')
+        else:
+            res.append('宝宝，今天很冷，直接上羽绒服！')
+    if humidity1<=40:
+        res.append(f'今天湿度{temperature1},很干，记得随身携带保湿产品！')
+    elif 50>humidity1>40:
+        res.append(f'今天湿度{temperature1},偏干，记得涂点保湿的再出门！')
+    else:
+        res.append(f'今天湿度{temperature1},很润，保湿可以随意。')
+    return res
+    
+        
+
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
     
@@ -98,23 +121,37 @@ birthday_left=get_birthday()
 words=get_words()
 
 color=get_random_color()
+
+tips=get_tips(weather1,temperature1,humidity1)
 print(love_days,birthday_left,words)
+
 
 code_city1 = ('440112','黄浦区')
 code_city2 = ('440106','天河区')
-city1,weather1,temperature1,winddirection1,windpower1,humidity1,city_forecasts1,dayweather_forecasts1,nightweather_forecasts1,daytemp_forecasts1,nighttemp_forecasts1, \
-city2,weather2,temperature2,winddirection2,windpower2,humidity2,city_forecasts2,dayweather_forecasts2,nightweather_forecasts2,daytemp_forecasts2,nighttemp_forecasts2= two_city_weather(code_city1,code_city2)
+# city1,weather1,temperature1,winddirection1,windpower1,humidity1,city_forecasts1,dayweather_forecasts1,nightweather_forecasts1,daytemp_forecasts1,nighttemp_forecasts1, \
+# city2,weather2,temperature2,winddirection2,windpower2,humidity2,city_forecasts2,dayweather_forecasts2,nightweather_forecasts2,daytemp_forecasts2,nighttemp_forecasts2= two_city_weather(code_city1,code_city2)
 
+
+city1,weather1,temperature1,winddirection1,windpower1,humidity1, city_forecasts1,dayweather_forecasts1,nightweather_forecasts1,daytemp_forecasts1,nighttemp_forecasts1=get_weather(code_city1)
+# data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
+#         'city1':{"value":city1},'weather1':{"value":weather1},'temperature1':{"value":temperature1},
+#         'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
+#         'city1':{"value":city_forecasts1},'dayweather1':{"value":dayweather_forecasts1},
+#        'nightweather1':{"value":nightweather_forecasts1},'daytemp1':{"value":daytemp_forecasts1},'nighttemp1':{"value":nighttemp_forecasts1},
+#        'city2':{"value":city2},'weather2':{"value":weather2},'temperature2':{"value":temperature2},
+#         'winddirection2':{"value":winddirection2},'windpower2':{"value":windpower2},'humidity2':{"value":humidity2},
+#         'city2':{"value":city_forecasts2},'dayweather2':{"value":dayweather_forecasts2},
+#        'nightweather2':{"value":nightweather_forecasts2},'daytemp2':{"value":daytemp_forecasts2},'nighttemp2':{"value":nighttemp_forecasts2},
+#         'tips':{"value":tips}
+#        }
 
 data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
         'city1':{"value":city1},'weather1':{"value":weather1},'temperature1':{"value":temperature1},
         'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
-        'city1':{"value":city_forecasts1},'dayweathe1':{"value":dayweather_forecasts1},
+        'city1':{"value":city_forecasts1},'dayweather1':{"value":dayweather_forecasts1},
        'nightweather1':{"value":nightweather_forecasts1},'daytemp1':{"value":daytemp_forecasts1},'nighttemp1':{"value":nighttemp_forecasts1},
-       'city2':{"value":city2},'weather2':{"value":weather2},'temperature2':{"value":temperature2},
-        'winddirection2':{"value":winddirection2},'windpower2':{"value":windpower2},'humidity2':{"value":humidity2},
-        'city2':{"value":city_forecasts2},'dayweather2':{"value":dayweather_forecasts2},
-       'nightweather2':{"value":nightweather_forecasts2},'daytemp2':{"value":daytemp_forecasts2},'nighttemp2':{"value":nighttemp_forecasts2}}
+        'tips':{"value":tips}
+       }
 
 
 
