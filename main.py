@@ -156,7 +156,7 @@ tips=get_tips(weather1,temperature1,humidity1)
 #         'tips':{"value":tips}
 #        }
 
-data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days}
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days},
         'city1':{"value":city1},'weather1':{"value":weather1},'temperature1':{"value":temperature1},
         'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
         'city1':{"value":city_forecasts1},'dayweather1':{"value":dayweather_forecasts1},
