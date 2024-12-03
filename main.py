@@ -95,13 +95,13 @@ def get_tips(weather1,temperature1,humidity1):
         else:
             res.append('宝宝，今天很冷，直接上羽绒服！')
     if int(humidity1)<=40:
-        res.append(f'宝宝，湿度{humidity1}%，很干，记得随身携带保湿产品！')
+        res.append(f'宝宝，湿度-很干，记得随身携带保湿产品！')
     elif 50>=int(humidity1)>40:
-        res.append(f'宝宝，湿度{humidity1}%，偏干，记得涂点保湿的再出门！')
+        res.append(f'宝宝，湿度-偏干，记得涂点保湿的再出门！')
     elif 70>=int(humidity1)>50:
-        res.append(f'宝宝，湿度{humidity1}%，适中，可以根据个人情况保湿。')
+        res.append(f'宝宝，湿度-适中，可以根据个人情况保湿。')
     else:
-        res.append(f'宝宝，湿度{humidity1}%，很润，保湿可以随意。')
+        res.append(f'宝宝，湿度-很润，保湿可以随意。')
     return res
     
         
@@ -120,12 +120,12 @@ love_days=love_count()
 
 birthday_left=get_birthday()
 
-words=get_words()
+# words=get_words()
 
-color=get_random_color()
+# color=get_random_color()
 
 
-print(love_days,birthday_left,words)
+# print(love_days,birthday_left)
 
 
 code_city1 = ('440112','黄埔区')
