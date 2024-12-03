@@ -100,16 +100,19 @@ words=get_words()
 color=get_random_color()
 print(love_days,birthday_left,words)
 
+code_city1 = ('440112','黄浦区')
+code_city2 = ('440106','天河区')
+city,weather,temperature,winddirection,windpower,humidity,  \
+city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts= get_weather(code_city1)
+
+
 data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
         'weather_city':{"value":city},'weather_weather':{"value":weather},'weather_temperature':{"value":temperature},
         'weather_winddirection':{"value":winddirection},'weather_windpower':{"value":windpower},'weather_humidity':{"value":humidity},
         'weather_city_forecasts':{"value":city_forecasts},'weather_dayweather_forecasts':{"value":dayweather_forecasts},
        'weather_nightweather_forecasts':{"value":nightweather_forecasts},'weather_daytemp_forecasts':{"value":daytemp_forecasts},'weather_nighttemp_forecasts':{"value":nighttemp_forecasts}}
 
-code_city1 = ('440112','黄浦区')
-code_city2 = ('440106','天河区')
-city,weather,temperature,winddirection,windpower,humidity,  \
-city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts= get_weather(code_city1)
+
 
 send_measage(user_id,template_id1,data)
 # send_measage(user_id,template_id2,data)
