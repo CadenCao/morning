@@ -88,9 +88,9 @@ def get_tips(weather1,temperature1,humidity1):
     else:
         if int(temperature1)>24:
             res.append('宝宝，今天很暖和哦！')
-        elif 19<=int(temperature1)<=24:
+        elif 15<=int(temperature1)<=24:
             res.append('宝宝，今天很舒适哦！')
-        elif 10<int(temperature1)<19:
+        elif 10<=int(temperature1)<15:
             res.append('宝宝，今天可能有点冷，多穿点衣服！')
         else:
             res.append('宝宝，今天很冷，直接上羽绒服！')
