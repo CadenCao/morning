@@ -87,33 +87,29 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 
-
 def send_measage(user_id,template_id,data):
     res = wm.send_template(user_id, template_id, data)
     print(data)
 
-code_city1 = ('440112','黄浦区')
-code_city2 = ('440106','天河区')
-weather= two_city_weather(code_city1,code_city2)
-
 love_days=love_count()
-# print(love_days)
 
 birthday_left=get_birthday()
-# print(birthday_left)
 
 words=get_words()
-# print(words)
 
 color=get_random_color()
 print(love_days,birthday_left,words)
-# city,weather,temperature,winddirection,windpower,humidity,     city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts
 
 data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
         'weather_city':{"value":city},'weather_weather':{"value":weather},'weather_temperature':{"value":temperature},
         'weather_winddirection':{"value":winddirection},'weather_windpower':{"value":windpower},'weather_humidity':{"value":humidity},
         'weather_city_forecasts':{"value":city_forecasts},'weather_dayweather_forecasts':{"value":dayweather_forecasts},
        'weather_nightweather_forecasts':{"value":nightweather_forecasts},'weather_daytemp_forecasts':{"value":daytemp_forecasts},'weather_nighttemp_forecasts':{"value":nighttemp_forecasts}}
+
+code_city1 = ('440112','黄浦区')
+code_city2 = ('440106','天河区')
+city,weather,temperature,winddirection,windpower,humidity,  \
+city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts= get_weather(code_city1)
 
 send_measage(user_id,template_id1,data)
 # send_measage(user_id,template_id2,data)
