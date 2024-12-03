@@ -84,7 +84,7 @@ def get_words():
 def get_tips(weather1,temperature1,humidity1):
     res=[]
     if '雨'in weather1:
-        res_tem='宝宝，今天有雨哦，记得带伞，小心着凉。
+        res.append('宝宝，今天很暖和哦！')'宝宝，今天有雨哦，记得带伞，小心着凉。')
     else:
         if temperature1>24:
             res.append('宝宝，今天很暖和哦！')
