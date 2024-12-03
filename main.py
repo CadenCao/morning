@@ -155,7 +155,7 @@ data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},
         'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
         'city1':{"value":city_forecasts1},'dayweather1':{"value":dayweather_forecasts1},
        'nightweather1':{"value":nightweather_forecasts1},'daytemp1':{"value":daytemp_forecasts1},'nighttemp1':{"value":nighttemp_forecasts1},
-        'tips1':{"value":tips[0][:5]},'tips2':{"value":tips[1][:2]}
+        'tips1':{"value":tips[0]},'tips2':{"value":tips[1]}
        }
 
 
