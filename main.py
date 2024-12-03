@@ -24,7 +24,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 
 user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 # user_id = os.environ["USER_ID"]
-template_id1 = '5qYPNR9sV0l9l8IEbKDKR7l0FP96B5CAoMkGLyMotgc'
+template_id1 = 'qfL9Z0gfKc7hJdqAQjVbS6fiGcPF1IP-iEUClcJ3htY'
 template_id2 = 'kdHK7YLg7cXgq8dI7Uv_sWw2wKqEPsc0tDv9kxV5ENA'
 # template_id = os.environ["TEMPLATE_ID"]
 
@@ -40,16 +40,23 @@ def get_weather(code_city):
     url = f"https://restapi.amap.com/v3/weather/weatherInfo?key={key}&city={code}&extensions=all"
     res_get_forecast = requests.get(url).json()
     forecasts=res_get_forecast['forecasts'][0]
-
-
+    
     tem_time=f"时间：{lives['reporttime']}"
-    res_base=f"广州市{lives['city']}   当前天气：{lives['weather']}   温度：{lives['temperature']}   风向：{lives['winddirection']}   \
-风力级别：{lives['windpower']}   空气湿度：{lives['humidity']}"
     
-    res_forecasts=f"广州市{forecasts['city']}   明天白天天气：{forecasts['casts'][0]['dayweather']}   明天晚上天气：{forecasts['casts'][0]['nightweather']}   \
-明天白天温度：{forecasts['casts'][0]['daytemp']}   明天晚上温度：{forecasts['casts'][0]['nighttemp']}"
-    
-    return tem_time,f'{res_base}\n{res_forecasts}'
+
+#     res_base=f"广州市{lives['city']}   当前天气：{lives['weather']}   温度：{lives['temperature']}   风向：{lives['winddirection']}   \
+# 风力级别：{lives['windpower']}   空气湿度：{lives['humidity']}"
+    city,weather,temperature=f'广州市{lives['city']}',lives['weather'],lives['temperature']
+    winddirection,windpower,humidity=lives['winddirection'],lives['windpower'],lives['humidity']
+
+#         res_forecasts=f"广州市{forecasts['city']}   明天白天天气：{forecasts['casts'][0]['dayweather']}   明天晚上天气：{forecasts['casts'][0]['nightweather']}   \
+# 明天白天温度：{forecasts['casts'][0]['daytemp']}   明天晚上温度：{forecasts['casts'][0]['nighttemp']}"
+    city_forecasts,dayweather_forecasts,nightweather_forecasts=f"广州市{forecasts['city']}",forecasts['casts'][0]['dayweather'],forecasts['casts'][0]['nightweather']
+    daytemp_forecasts,nighttemp_forecasts=forecasts['casts'][0]['daytemp'],forecasts['casts'][0]['nighttemp']
+
+    # return tem_time,f'{res_base}\n{res_forecasts}'
+    return city,weather,temperature,winddirection,windpower,humidity,  \
+city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts
 
 def two_city_weather(code_city1,code_city2):
     tem_time1,res1= get_weather(code_city1)
@@ -100,8 +107,13 @@ words=get_words()
 
 color=get_random_color()
 print(love_days,birthday_left,words)
+# city,weather,temperature,winddirection,windpower,humidity,     city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts
 
-data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words+words+words},'weather':{"value":'晴 暖和 暖和'}}
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
+        'weather_city':{"value":city},'weather_weather':{"value":weather},'weather_temperature':{"value":temperature},
+        'weather_winddirection':{"value":winddirection},'weather_windpower':{"value":windpower},'weather_humidity':{"value":humidity},
+        'weather_city_forecasts':{"value":city_forecasts},'weather_dayweather_forecasts':{"value":dayweather_forecasts},
+       'weather_nightweather_forecasts':{"value":nightweather_forecasts},'weather_daytemp_forecasts':{"value":daytemp_forecasts},'weather_nighttemp_forecasts':{"value":nighttemp_forecasts}}
 
 send_measage(user_id,template_id1,data)
 # send_measage(user_id,template_id2,data)
