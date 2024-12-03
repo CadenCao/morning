@@ -47,12 +47,12 @@ def get_weather(code_city):
 
 #     res_base=f"广州市{lives['city']}   当前天气：{lives['weather']}   温度：{lives['temperature']}   风向：{lives['winddirection']}   \
 # 风力级别：{lives['windpower']}   空气湿度：{lives['humidity']}"
-    city,weather,temperature=f'广州市{lives['city']}',lives['weather'],lives['temperature']
+    city,weather,temperature=f'{lives['city']}',lives['weather'],lives['temperature']
     winddirection,windpower,humidity=lives['winddirection'],lives['windpower'],lives['humidity']
 
 #         res_forecasts=f"广州市{forecasts['city']}   明天白天天气：{forecasts['casts'][0]['dayweather']}   明天晚上天气：{forecasts['casts'][0]['nightweather']}   \
 # 明天白天温度：{forecasts['casts'][0]['daytemp']}   明天晚上温度：{forecasts['casts'][0]['nighttemp']}"
-    city_forecasts,dayweather_forecasts,nightweather_forecasts=f"广州市{forecasts['city']}",forecasts['casts'][0]['dayweather'],forecasts['casts'][0]['nightweather']
+    city_forecasts,dayweather_forecasts,nightweather_forecasts=f"{forecasts['city']}",forecasts['casts'][0]['dayweather'],forecasts['casts'][0]['nightweather']
     daytemp_forecasts,nighttemp_forecasts=forecasts['casts'][0]['daytemp'],forecasts['casts'][0]['nighttemp']
 
     # return tem_time,f'{res_base}\n{res_forecasts}'
@@ -95,11 +95,13 @@ def get_tips(weather1,temperature1,humidity1):
         else:
             res.append('宝宝，今天很冷，直接上羽绒服！')
     if int(humidity1)<=40:
-        res.append(f'今天湿度{temperature1},很干，记得随身携带保湿产品！')
-    elif 50>int(humidity1)>40:
-        res.append(f'今天湿度{temperature1},偏干，记得涂点保湿的再出门！')
+        res.append(f'今天湿度{humidity1},很干，记得随身携带保湿产品！')
+    elif 50>=int(humidity1)>40:
+        res.append(f'今天湿度{humidity1},偏干，记得涂点保湿的再出门！')
+    elif 60>=int(humidity1)>50:
+        res.append(f'今天湿度{humidity1},适中，可以根据个人情况保湿。')
     else:
-        res.append(f'今天湿度{temperature1},很润，保湿可以随意。')
+        res.append(f'今天湿度{humidity1},很润，保湿可以随意。')
     return res
     
         
