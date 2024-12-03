@@ -73,7 +73,7 @@ def love_count():
   delta2 = today - datetime.strptime(meet_data, "%Y-%m-%d %H:%M:%S")
   days,hours,minutes =delta2.days,delta2.seconds // 3600,delta2.seconds % 3600 // 60
   res2=f'{days}天{hours}时{minutes}分'
-  return res1,res
+  return res1,res2
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
