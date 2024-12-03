@@ -22,9 +22,10 @@ app_id = 'wxfdda80846713c1ca'
 app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 # app_secret = os.environ["APP_SECRET"]
 
-user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
+user_id1 = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
+user_id2 = 'oZBrP6NmYGuREGxGPOykkETbmrbU'
 # user_id = os.environ["USER_ID"]
-template_id1 = 'i398Xu1BUIBTx-13KUF1JPyTMcBonfAoZPbiO_oJdNs'
+template_id1 = 'KVoxM3_h864Pf5y9YjzZ8CVqaCmi6TIXo1xDWEO-osg'
 template_id2 = '7wiwcBbLwAVSGJ8GftX5FFTt0mk4ufsqY0Sl-3vjBcs'
 # template_id = os.environ["TEMPLATE_ID"]
 
@@ -63,7 +64,6 @@ def two_city_weather(code_city1,code_city2):
     res2= get_weather(code_city2)
     return res1+res2
     # return tem_time1+'\n'+res1+'\n\n'+res2
-
 
 def love_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d %H:%M:%S")
@@ -107,17 +107,17 @@ city2,weather2,temperature2,winddirection2,windpower2,humidity2,city_forecasts2,
 
 
 data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
-        'weather_city1':{"value":city1},'weather_weather1':{"value":weather1},'weather_temperature1':{"value":temperature1},
-        'weather_winddirection1':{"value":winddirection1},'weather_windpower1':{"value":windpower1},'weather_humidity1':{"value":humidity1},
-        'weather_city_forecasts1':{"value":city_forecasts1},'weather_dayweather_forecasts1':{"value":dayweather_forecasts1},
-       'weather_nightweather_forecasts1':{"value":nightweather_forecasts1},'weather_daytemp_forecasts1':{"value":daytemp_forecasts1},'weather_nighttemp_forecasts1':{"value":nighttemp_forecasts1},
-       'weather_city2':{"value":city2},'weather_weather2':{"value":weather2},'weather_temperature2':{"value":temperature2},
-        'weather_winddirection2':{"value":winddirection2},'weather_windpower2':{"value":windpower2},'weather_humidity2':{"value":humidity2},
-        'weather_city_forecasts2':{"value":city_forecasts2},'weather_dayweather_forecasts2':{"value":dayweather_forecasts2},
-       'weather_nightweather_forecasts2':{"value":nightweather_forecasts2},'weather_daytemp_forecasts2':{"value":daytemp_forecasts2},'weather_nighttemp_forecasts2':{"value":nighttemp_forecasts2}}
+        'city1':{"value":city1},'weather1':{"value":weather1},'temperature1':{"value":temperature1},
+        'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
+        'city1':{"value":city_forecasts1},'dayweathe1':{"value":dayweather_forecasts1},
+       'nightweather1':{"value":nightweather_forecasts1},'daytemp1':{"value":daytemp_forecasts1},'nighttemp1':{"value":nighttemp_forecasts1},
+       'city2':{"value":city2},'weather2':{"value":weather2},'temperature2':{"value":temperature2},
+        'winddirection2':{"value":winddirection2},'windpower2':{"value":windpower2},'humidity2':{"value":humidity2},
+        'city2':{"value":city_forecasts2},'dayweather2':{"value":dayweather_forecasts2},
+       'nightweather2':{"value":nightweather_forecasts2},'daytemp2':{"value":daytemp_forecasts2},'nighttemp2':{"value":nighttemp_forecasts2}}
 
 
 
-send_measage(user_id,template_id1,data)
-send_measage(user_id,template_id2,data)
+send_measage(user_id1,template_id1,data)
+send_measage(user_id2,template_id1,data)
 
