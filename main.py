@@ -24,8 +24,8 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 
 user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 # user_id = os.environ["USER_ID"]
-template_id1 = 'qfL9Z0gfKc7hJdqAQjVbS6fiGcPF1IP-iEUClcJ3htY'
-template_id2 = 'kdHK7YLg7cXgq8dI7Uv_sWw2wKqEPsc0tDv9kxV5ENA'
+template_id1 = 'UyBorfAxWpQti74dhPbfUPFsdyiiojvFmI4GjRHvfXo'
+template_id2 = 'oy7rtiU0U0vENmlmRUI1wUkG2RuSVmf_ILQdtK6BUdg'
 # template_id = os.environ["TEMPLATE_ID"]
 
 key='183ab5e8e01d6f3876be06ad207c7298'
@@ -55,14 +55,14 @@ def get_weather(code_city):
     daytemp_forecasts,nighttemp_forecasts=forecasts['casts'][0]['daytemp'],forecasts['casts'][0]['nighttemp']
 
     # return tem_time,f'{res_base}\n{res_forecasts}'
-    return city,weather,temperature,winddirection,windpower,humidity,  \
-city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts
+    return [city,weather,temperature,winddirection,windpower,humidity,  \
+city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts]
 
 def two_city_weather(code_city1,code_city2):
-    tem_time1,res1= get_weather(code_city1)
-    tem_time2,res2= get_weather(code_city2)
-    # return tem_time1+res1+res2
-    return tem_time1+'\n'+res1+'\n\n'+res2
+    res1= get_weather(code_city1)
+    res2= get_weather(code_city2)
+    return res1+res2
+    # return tem_time1+'\n'+res1+'\n\n'+res2
 
 
 def love_count():
@@ -102,18 +102,22 @@ print(love_days,birthday_left,words)
 
 code_city1 = ('440112','黄浦区')
 code_city2 = ('440106','天河区')
-city,weather,temperature,winddirection,windpower,humidity,  \
-city_forecasts,dayweather_forecasts,nightweather_forecasts,daytemp_forecasts,nighttemp_forecasts= get_weather(code_city1)
+city1,weather1,temperature1,winddirection1,windpower1,humidity1,city_forecasts1,dayweather_forecasts1,nightweather_forecasts1,daytemp_forecasts1,nighttemp_forecasts1 \
+city2,weather2,temperature2,winddirection2,windpower2,humidity2,ity_forecasts2,dayweather_forecasts2,nightweather_forecasts2,daytemp_forecasts2,nighttemp_forecasts2= two_city_weather(code_city1,code_city2)
 
 
 data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
-        'weather_city':{"value":city},'weather_weather':{"value":weather},'weather_temperature':{"value":temperature},
-        'weather_winddirection':{"value":winddirection},'weather_windpower':{"value":windpower},'weather_humidity':{"value":humidity},
-        'weather_city_forecasts':{"value":city_forecasts},'weather_dayweather_forecasts':{"value":dayweather_forecasts},
-       'weather_nightweather_forecasts':{"value":nightweather_forecasts},'weather_daytemp_forecasts':{"value":daytemp_forecasts},'weather_nighttemp_forecasts':{"value":nighttemp_forecasts}}
+        'weather_city1':{"value":city1},'weather_weather1':{"value":weather1},'weather_temperature1':{"value":temperature1},
+        'weather_winddirection1':{"value":winddirection1},'weather_windpower1':{"value":windpower1},'weather_humidity1':{"value":humidity1},
+        'weather_city_forecasts1':{"value":city_forecasts1},'weather_dayweather_forecasts1':{"value":dayweather_forecasts1},
+       'weather_nightweather_forecasts1':{"value":nightweather_forecasts1},'weather_daytemp_forecasts1':{"value":daytemp_forecasts1},'weather_nighttemp_forecasts1':{"value":nighttemp_forecasts1},
+       'weather_city2':{"value":city2},'weather_weather2':{"value":weather2},'weather_temperature2':{"value":temperature2},
+        'weather_winddirection2':{"value":winddirection2},'weather_windpower2':{"value":windpower2},'weather_humidity2':{"value":humidity2},
+        'weather_city_forecasts2':{"value":city_forecasts2},'weather_dayweather_forecasts2':{"value":dayweather_forecasts2},
+       'weather_nightweather_forecasts2':{"value":nightweather_forecasts2},'weather_daytemp_forecasts2':{"value":daytemp_forecasts2},'weather_nighttemp_forecasts2':{"value":nighttemp_forecasts2}}
 
 
 
 send_measage(user_id,template_id1,data)
-# send_measage(user_id,template_id2,data)
+send_measage(user_id,template_id2,data)
 
