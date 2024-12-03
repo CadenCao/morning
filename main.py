@@ -24,7 +24,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 
 user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 # user_id = os.environ["USER_ID"]
-template_id1 = '69ZykBq_bQwefXVxldvzMsGuiGmDXFeB3EdoTQnvgZQ	'
+template_id1 = '69ZykBq_bQwefXVxldvzMsGuiGmDXFeB3EdoTQnvgZQ'
 template_id2 = 'UVVtbZiSoHoMh5xhauWnbTrkQ1VbH84nsoBdEOgcKsk'
 # template_id = os.environ["TEMPLATE_ID"]
 
