@@ -22,7 +22,7 @@ app_id = 'wxfdda80846713c1ca'
 app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 # app_secret = os.environ["APP_SECRET"]
 
-user_id1 = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
+user_id1 = 'vvuDC86mZIUpD3D-KOOXM9yWcSrgeVFQ1_oGWisItw4'
 user_id2 = 'oZBrP6NmYGuREGxGPOykkETbmrbU'
 # user_id = os.environ["USER_ID"]
 template_id1 = 'N93yh95JA5rzda8_GlnMHJbXsoItXhwPD0mHcLdrvZg'
@@ -90,7 +90,7 @@ def get_tips(weather1,temperature1,humidity1):
             res.append('宝宝，今天很暖和哦！')
         elif 19<=int(temperature1)<=24:
             res.append('宝宝，今天很舒适哦！')
-        elif 15<int(temperature1)<19:
+        elif 10<int(temperature1)<19:
             res.append('宝宝，今天可能有点冷，多穿点衣服！')
         else:
             res.append('宝宝，今天很冷，直接上羽绒服！')
@@ -161,5 +161,5 @@ data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},
 
 
 send_measage(user_id1,template_id1,data)
-# send_measage(user_id2,template_id1,data)
+send_measage(user_id2,template_id1,data)
 
