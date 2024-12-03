@@ -25,7 +25,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 user_id1 = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 user_id2 = 'oZBrP6NmYGuREGxGPOykkETbmrbU'
 # user_id = os.environ["USER_ID"]
-template_id1 = 'UfwyhrzREyfk9FObWtfmGB0K_lJcJJ5E7xWb0FO32KM'
+template_id1 = '2ztfG16nm0RsfsDpmKaG2ttK8opPrPMTv2s3SOAO4Hk'
 template_id2 = '7wiwcBbLwAVSGJ8GftX5FFTt0mk4ufsqY0Sl-3vjBcs'
 # template_id = os.environ["TEMPLATE_ID"]
 
@@ -155,7 +155,7 @@ data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},
         'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
         'city1':{"value":city_forecasts1},'dayweather1':{"value":dayweather_forecasts1},
        'nightweather1':{"value":nightweather_forecasts1},'daytemp1':{"value":daytemp_forecasts1},'nighttemp1':{"value":nighttemp_forecasts1},
-        'tips':{"value":tips}
+        'tips1':{"value":tips[0]},'tips2':{"value":tips[1]}
        }
 
 
