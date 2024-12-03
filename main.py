@@ -167,5 +167,5 @@ data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},
 
 
 send_measage(user_id1,template_id1,data)
-# send_measage(user_id2,template_id1,data)
+send_measage(user_id2,template_id1,data)
 
