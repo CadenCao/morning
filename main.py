@@ -24,7 +24,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 
 user_id = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 # user_id = os.environ["USER_ID"]
-template_id1 = '0ikS1kgPKSSgkFRx5akA_dU6DdQnqcbVhDgra1pin7A'
+template_id1 = '1bHOmk1Dm9pbrljytmomP5X_RP9TrbfT_EQO1eEBSgA'
 template_id2 = 'kdHK7YLg7cXgq8dI7Uv_sWw2wKqEPsc0tDv9kxV5ENA'
 # template_id = os.environ["TEMPLATE_ID"]
 
@@ -101,7 +101,7 @@ words=get_words()
 color=get_random_color()
 print(love_days,birthday_left,words)
 
-data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},'weather':{"value":'晴    暖和 暖和晴    暖和 暖和晴    暖和 暖和晴    暖和 暖和晴    暖和 暖和晴    暖和 暖和'}}
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},'weather':{"value":'晴 暖和 暖和'}}
 
 send_measage(user_id,template_id1,data)
 # send_measage(user_id,template_id2,data)
