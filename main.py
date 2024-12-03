@@ -122,7 +122,7 @@ words=get_words()
 
 color=get_random_color()
 
-tips=get_tips(weather1,temperature1,humidity1)
+
 print(love_days,birthday_left,words)
 
 
@@ -132,7 +132,10 @@ code_city2 = ('440106','天河区')
 # city2,weather2,temperature2,winddirection2,windpower2,humidity2,city_forecasts2,dayweather_forecasts2,nightweather_forecasts2,daytemp_forecasts2,nighttemp_forecasts2= two_city_weather(code_city1,code_city2)
 
 
-city1,weather1,temperature1,winddirection1,windpower1,humidity1, city_forecasts1,dayweather_forecasts1,nightweather_forecasts1,daytemp_forecasts1,nighttemp_forecasts1=get_weather(code_city1)
+city1,weather1,temperature1,winddirection1,windpower1,humidity1,city_forecasts1,dayweather_forecasts1,nightweather_forecasts1,daytemp_forecasts1,nighttemp_forecasts1=get_weather(code_city1)
+tips=get_tips(weather1,temperature1,humidity1)
+
+
 # data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"words":{"value":words},
 #         'city1':{"value":city1},'weather1':{"value":weather1},'temperature1':{"value":temperature1},
 #         'winddirection1':{"value":winddirection1},'windpower1':{"value":windpower1},'humidity1':{"value":humidity1},
