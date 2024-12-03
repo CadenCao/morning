@@ -22,10 +22,10 @@ app_id = 'wxfdda80846713c1ca'
 app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 # app_secret = os.environ["APP_SECRET"]
 
-user_id1 = 'vvuDC86mZIUpD3D-KOOXM9yWcSrgeVFQ1_oGWisItw4'
+user_id1 = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 user_id2 = 'oZBrP6NmYGuREGxGPOykkETbmrbU'
 # user_id = os.environ["USER_ID"]
-template_id1 = 'N93yh95JA5rzda8_GlnMHJbXsoItXhwPD0mHcLdrvZg'
+template_id1 = 'vvuDC86mZIUpD3D-KOOXM9yWcSrgeVFQ1_oGWisItw4'
 template_id2 = '7wiwcBbLwAVSGJ8GftX5FFTt0mk4ufsqY0Sl-3vjBcs'
 # template_id = os.environ["TEMPLATE_ID"]
 
