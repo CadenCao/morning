@@ -86,17 +86,17 @@ def get_tips(weather1,temperature1,humidity1):
     if '雨'in weather1:
         res.append('宝宝，今天有雨哦，记得带伞，小心着凉。')
     else:
-        if temperature1>24:
+        if int(temperature1)>24:
             res.append('宝宝，今天很暖和哦！')
-        elif 19<=temperature1<=24:
+        elif 19<=int(temperature1)<=24:
             res.append('宝宝，今天很舒适哦！')
-        elif 15<temperature1<19:
+        elif 15<int(temperature1)<19:
             res.append('宝宝，今天可能有点冷，多穿点衣服！')
         else:
             res.append('宝宝，今天很冷，直接上羽绒服！')
-    if humidity1<=40:
+    if int(humidity1)<=40:
         res.append(f'今天湿度{temperature1},很干，记得随身携带保湿产品！')
-    elif 50>humidity1>40:
+    elif 50>int(humidity1)>40:
         res.append(f'今天湿度{temperature1},偏干，记得涂点保湿的再出门！')
     else:
         res.append(f'今天湿度{temperature1},很润，保湿可以随意。')
