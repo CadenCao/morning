@@ -25,7 +25,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 user_id1 = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 user_id2 = 'oZBrP6NmYGuREGxGPOykkETbmrbU'
 # user_id = os.environ["USER_ID"]
-template_id1 = 'PFjfGwM7uXnjKcfgdq2WL_77iIq_KezPsUfNkU4jURw'
+template_id1 = 's8KrDTA-dqnRohOeSsKEzDnuCyMqH5GERAYEhwoQ4G8'
 template_id2 = '7wiwcBbLwAVSGJ8GftX5FFTt0mk4ufsqY0Sl-3vjBcs'
 # template_id = os.environ["TEMPLATE_ID"]
 
@@ -83,7 +83,7 @@ def get_words():
 
 def get_tips(weather1,temperature1,humidity1):
     res=[]
-    if '雨'in weather1:
+    if '雨' in weather1:
         res.append('宝宝，今天有雨哦，记得带伞，小心着凉。')
     else:
         if int(temperature1)>24:
@@ -95,13 +95,13 @@ def get_tips(weather1,temperature1,humidity1):
         else:
             res.append('宝宝，今天很冷，直接上羽绒服！')
     if int(humidity1)<=40:
-        res.append(f'宝宝，湿度{humidity1}，很干，记得随身携带保湿产品！')
+        res.append(f'宝宝，湿度{humidity1}%，很干，记得随身携带保湿产品！')
     elif 50>=int(humidity1)>40:
-        res.append(f'宝宝，湿度{humidity1}，偏干，记得涂点保湿的再出门！')
+        res.append(f'宝宝，湿度{humidity1}%，偏干，记得涂点保湿的再出门！')
     elif 70>=int(humidity1)>50:
-        res.append(f'宝宝，湿度{humidity1}，适中，可以根据个人情况保湿。')
+        res.append(f'宝宝，湿度{humidity1}%，适中，可以根据个人情况保湿。')
     else:
-        res.append(f'宝宝，湿度{humidity1}，很润，保湿可以随意。')
+        res.append(f'宝宝，湿度{humidity1}%，很润，保湿可以随意。')
     return res
     
         
@@ -161,5 +161,5 @@ data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},
 
 
 send_measage(user_id1,template_id1,data)
-send_measage(user_id2,template_id1,data)
+# send_measage(user_id2,template_id1,data)
 
