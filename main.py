@@ -139,12 +139,12 @@ city,fxDate,moonPhase,tempMax,tempMin,textDay,textNight,windScaleDay,uvIndex,hum
 tips=get_tips(textDay,textNight,temperature,humidity,uvIndex)
 
 
-data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days},
-        'city':{"value":city},'fxDate':{"value":fxDate},'moonPhase':{"value":moonPhase},
-        'tempMax':{"value":tempMax},'tempMin':{"value":tempMin},'textDay':{"value":textDay},
-        'textNight':{"value":textNight},'windScaleDay':{"value":windScaleDay},
-        'uvIndex':{"value":uvIndex},'humidity':{"value":humidity},
-        'tips0':{"value":tips[0]},'tips1':{"value":tips[1],'tips2':{"value":tips[2]}
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days}, \
+        'city':{"value":city},'fxDate':{"value":fxDate},'moonPhase':{"value":moonPhase}, \
+        'tempMax':{"value":tempMax},'tempMin':{"value":tempMin},'textDay':{"value":textDay}, \
+        'textNight':{"value":textNight},'windScaleDay':{"value":windScaleDay}, \
+        'uvIndex':{"value":uvIndex},'humidity':{"value":humidity}, \
+        'tips0':{"value":tips[0]},'tips1':{"value":tips[1],'tips2':{"value":tips[2]} \
        }
 
 
