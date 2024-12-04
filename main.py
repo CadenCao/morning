@@ -17,7 +17,7 @@ app_secret = '1660ddba6b8258c445dc10bf44261cbd'
 user_id1 = 'oZBrP6Ebt1GcssGf2Yf_JiUFbXKg'
 user_id2 = 'oZBrP6NmYGuREGxGPOykkETbmrbU'
 
-template_id1 = '0w5XPWm3NeEJ7wKyK9NoB7srPkrMeIl_MgNowqv_x8I'
+template_id1 = 'ca1nmLCYiuGYjSuekXITbuImaRT65WhNRO1GL9CC6ho'
 template_id2 = '7wiwcBbLwAVSGJ8GftX5FFTt0mk4ufsqY0Sl-3vjBcs'
 
 
@@ -139,12 +139,12 @@ city,fxDate,moonPhase,tempMax,tempMin,textDay,textNight,windScaleDay,uvIndex,hum
 tips=get_tips(textDay,textNight,temperature,humidity,uvIndex)
 
 
-data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days}, \
-        'city':{"value":city},'fxDate':{"value":fxDate},'moonPhase':{"value":moonPhase}, \
-        'tempMax':{"value":tempMax},'tempMin':{"value":tempMin},'textDay':{"value":textDay}, \
-        'textNight':{"value":textNight},'windScaleDay':{"value":windScaleDay}, \
-        'uvIndex':{"value":uvIndex},'humidity':{"value":humidity}, \
-        'tips0':{"value":tips[0]},'tips1':{"value":tips[1],'tips2':{"value":tips[2]} \
+data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days},
+        "city":{"value":city},"fxDate":{"value":fxDate},"moonPhase":{"value":moonPhase},
+        "tempMax":{"value":tempMax},"tempMin":{"value":tempMin},"textDay":{"value":textDay},
+        "textNight":{"value":textNight},"windScaleDay":{"value":windScaleDay},
+        "uvIndex":{"value":uvIndex},"humidity":{"value":humidity},
+        "tips0":{"value":tips[0]},"tips1":{"value":tips[1],"tips2":{"value":tips[2]}
        }
 
 
