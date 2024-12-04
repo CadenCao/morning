@@ -100,11 +100,11 @@ def get_tips(textDay,textNight,temperature,humidity,uvIndex):
         res.append(f'宝宝，明天空气很润，保湿可以随意')
     if int(uvIndex)<=2:
         res.append(f'宝宝，明天紫外线很弱，大胆出门')
-    elif 4>=int(humidity)>=3:
+    elif 4>=int(uvIndex)>=3:
         res.append(f'宝宝，明天紫外线偏弱，不用担心')
-    elif 6>=int(humidity)>=5:
+    elif 6>=int(uvIndex)>=5:
         res.append(f'宝宝，明天紫外线较强，注意防晒')
-    elif 9>=int(humidity)>=7:
+    elif 9>=int(uvIndex)>=7:
         res.append(f'宝宝，明天紫外线很强，可以防晒霜+伞走起')
     else:
         res.append(f'宝宝，明天紫外线超强，需要防晒武装到牙齿了')
