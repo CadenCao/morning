@@ -136,7 +136,7 @@ code_city=('101280111','广州市黄埔区')
 
 city,fxDate,moonPhase,tempMax,tempMin,textDay,textNight,windScaleDay,uvIndex,humidity=get_weather(code_city)
 
-tips=get_tips(textDay,textNight,temperature,humidity,uvIndex)
+tips=get_tips(textDay,textNight,tempMax,humidity,uvIndex)
 
 
 data = {"love_days":{"value":love_days},"birthday_left":{"value":birthday_left},"meet_days":{"value":meet_days},
