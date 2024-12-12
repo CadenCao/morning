@@ -7,8 +7,8 @@ import os
 import random
 
 today = datetime.now()
-start_date = '2024-09-22 19:00:00'
-meet_data='2024-08-31 20:13:00'
+start_date = '2024-09-21 00:00:01'
+meet_data='2024-08-31 00:00:01'
 birthday = '03-12'
 
 app_id = 'wxfdda80846713c1ca'
@@ -59,10 +59,10 @@ lives['textNight'],lives['windScaleDay'],lives['uvIndex'],lives['humidity'],
 def love_count():
   delta1 = today - datetime.strptime(start_date, "%Y-%m-%d %H:%M:%S")
   days,hours,minutes =delta1.days,delta1.seconds // 3600,delta1.seconds % 3600 // 60
-  res1=f'{days}天{hours}时{minutes}分'
+  res1=f'{days+1}天'
   delta2 = today - datetime.strptime(meet_data, "%Y-%m-%d %H:%M:%S")
   days,hours,minutes =delta2.days,delta2.seconds // 3600,delta2.seconds % 3600 // 60
-  res2=f'{days}天{hours}时{minutes}分'
+  res2=f'{days+1}天{'
   return res1,res2
 
 def get_birthday():
