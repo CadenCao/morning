@@ -7,8 +7,8 @@ import os
 import random
 
 today = datetime.now()
-start_date = '2024-09-21 00:00:00'
-meet_data='2024-08-30 00:00:00'
+start_date = '2024-09-22 00:00:00'
+meet_data='2024-08-31 00:00:00'
 birthday = '03-12'
 
 app_id = 'wxfdda80846713c1ca'
