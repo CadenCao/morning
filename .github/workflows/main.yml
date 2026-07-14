@@ -1,5 +1,4 @@
 name: morning
-
 on:
   schedule:
     - cron: '30 14 * * *'
@@ -12,19 +11,19 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           ref: master
 
-      - name: setup python
-        uses: actions/setup-python@v5
+      - name: sender
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.11'
+          python-version: '3.x'
           architecture: 'x64'
 
-      - name: install dependencies and run
+      - name: run script
         run: pip install -r ./requirements.txt && python ./main.py
-        env:
+        env:   # 👈 必须和 run 对齐，不能放在外面
           APP_ID: ${{ secrets.APP_ID }}
           APP_SECRET: ${{ secrets.APP_SECRET }}
           TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
