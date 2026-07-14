@@ -2,9 +2,8 @@ name: morning
 
 on:
   schedule:
-    # UTC 14:30 = 北京时间 22:30，避开整点高峰
     - cron: '30 14 * * *'
-  workflow_dispatch:   # 支持手动触发
+  workflow_dispatch:
 
 jobs:
   send_message:
