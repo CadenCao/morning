@@ -13,73 +13,63 @@ TEMPLATE_ID = os.getenv("TEMPLATE_ID")
 USER_ID1 = os.getenv("USER_ID1")
 USER_ID2 = os.getenv("USER_ID2")
 WEATHER_KEY = os.getenv("WEATHER_KEY")          # 和风天气 key
-START_DATE = os.getenv("START_DATE")            # 恋爱开始日期，格式：2024-09-22 00:00:00
-MEET_DATE = os.getenv("MEET_DATE")              # 相遇日期，格式：2024-08-31 00:00:00
-BIRTHDAY = os.getenv("BIRTHDAY")                # 生日，格式：03-12
-CITY_CODE = os.getenv("CITY_CODE", "101280111") # 城市代码，默认广州黄埔
+START_DATE = os.getenv("START_DATE")            # 恋爱开始日期
+MEET_DATE = os.getenv("MEET_DATE")              # 相遇日期
+BIRTHDAY = os.getenv("BIRTHDAY")                # 生日，如 03-12
+CITY_CODE = os.getenv("CITY_CODE", "101280111") # 城市代码
 
 # ==================== 北京时间工具 ====================
 BEIJING_TZ = timezone(timedelta(hours=8))
 
 def get_beijing_now():
-    """获取当前北京时间"""
     return datetime.now(BEIJING_TZ)
 
 # ==================== 天气获取 ====================
 def get_weather(city_code):
-    """获取明天天气，返回列表"""
+    """获取明天天气"""
     url = f"https://devapi.qweather.com/v7/weather/3d?location={city_code}&key={WEATHER_KEY}"
     resp = requests.get(url, timeout=10)
     resp.raise_for_status()
     data = resp.json()
     
-    # daily[0]=今天, daily[1]=明天
-    tomorrow = data['daily'][1]
-    
-    return [
-        tomorrow['fxDate'],        # 日期
-        tomorrow['moonPhase'],     # 月相
-        tomorrow['tempMax'],       # 最高温
-        tomorrow['tempMin'],       # 最低温
-        tomorrow['textDay'],       # 白天天气
-        tomorrow['textNight'],     # 夜间天气
-        tomorrow['windScaleDay'],  # 风力
-        tomorrow['uvIndex'],       # 紫外线
-        tomorrow['humidity'],      # 湿度
-    ]
+    tomorrow = data['daily'][1]  # [0]=今天 [1]=明天
+    return {
+        "fxDate": tomorrow['fxDate'],
+        "moonPhase": tomorrow['moonPhase'],
+        "tempMax": tomorrow['tempMax'],
+        "tempMin": tomorrow['tempMin'],
+        "textDay": tomorrow['textDay'],
+        "textNight": tomorrow['textNight'],
+        "windScaleDay": tomorrow['windScaleDay'],
+        "uvIndex": tomorrow['uvIndex'],
+        "humidity": tomorrow['humidity'],
+    }
 
 # ==================== 纪念日计算 ====================
 def get_love_days():
-    """计算恋爱天数"""
     start = datetime.strptime(START_DATE, "%Y-%m-%d %H:%M:%S")
     delta = get_beijing_now() - start.replace(tzinfo=BEIJING_TZ)
     return str(delta.days)
 
 def get_meet_days():
-    """计算相遇天数"""
     meet = datetime.strptime(MEET_DATE, "%Y-%m-%d %H:%M:%S")
     delta = get_beijing_now() - meet.replace(tzinfo=BEIJING_TZ)
     return f"{delta.days}天"
 
 # ==================== 生日倒计时 ====================
 def get_birthday_left():
-    """计算距离下一个生日还有多少天"""
     today = get_beijing_now()
     try:
         next_birthday = datetime.strptime(f"{today.year}-{BIRTHDAY}", "%Y-%m-%d")
     except ValueError:
-        # 如果今年没有 2月29日，按 2月28日 处理
         next_birthday = datetime.strptime(f"{today.year}-02-28", "%Y-%m-%d")
-    
     next_birthday = next_birthday.replace(tzinfo=BEIJING_TZ)
     if next_birthday < today:
         next_birthday = next_birthday.replace(year=next_birthday.year + 1)
-    
     return (next_birthday - today).days
 
-# ==================== 土味情话 ====================
+# ==================== 情话 ====================
 def get_words(max_retries=3):
-    """获取土味情话，带有限重试"""
     for i in range(max_retries):
         try:
             resp = requests.get("https://api.shadiao.pro/chp", timeout=5)
@@ -88,18 +78,16 @@ def get_words(max_retries=3):
         except Exception:
             pass
         time.sleep(1)
-    return "今天也要开心哦！"  # 降级文案
+    return "今天也要开心哦！"
 
-# ==================== 贴心小提示 ====================
-def get_tips(weather_text_day, weather_text_night, temp_max, humidity, uv_index):
-    """根据天气生成生活小贴士"""
+# ==================== 贴心提示 ====================
+def get_tips(text_day, text_night, temp_max, humidity, uv_index):
     tips = []
     temp = int(temp_max)
     humi = int(humidity)
     uv = int(uv_index)
     
-    # 雨天/晴天 穿衣建议
-    if '雨' in weather_text_day or '雨' in weather_text_night:
+    if '雨' in text_day or '雨' in text_night:
         tips.append('宝宝，明天有雨哦，记得带伞，小心着凉')
     else:
         if temp > 24:
@@ -111,7 +99,6 @@ def get_tips(weather_text_day, weather_text_night, temp_max, humidity, uv_index)
         else:
             tips.append('宝宝，明天很冷，直接上羽绒服')
     
-    # 湿度建议
     if humi <= 40:
         tips.append('宝宝，明天空气很干，记得随身携带保湿产品')
     elif 40 < humi <= 50:
@@ -121,7 +108,6 @@ def get_tips(weather_text_day, weather_text_night, temp_max, humidity, uv_index)
     else:
         tips.append('宝宝，明天空气很润，保湿可以随意')
     
-    # 紫外线建议
     if uv <= 2:
         tips.append('宝宝，明天紫外线很弱，大胆出门')
     elif 3 <= uv <= 4:
@@ -148,22 +134,25 @@ def send_message(user_id, template_id, data):
 
 # ==================== 主逻辑 ====================
 def main():
-    # 1. 获取天气
-    city_name = "广州市黄埔区"  # 可改成从环境变量读取
-    weather_data = get_weather(CITY_CODE)
-    fx_date, moon_phase, temp_max, temp_min, text_day, text_night, wind_scale, uv_index, humidity = weather_data
+    # 1. 天气
+    weather = get_weather(CITY_CODE)
     
-    # 2. 获取纪念日
+    # 2. 纪念日
     love_days = get_love_days()
     meet_days = get_meet_days()
     birthday_left = get_birthday_left()
     
-    # 3. 获取情话
+    # 3. 情话
     love_words = get_words()
     
-    # 4. 生成小贴士
-    tips = get_tips(text_day, text_night, temp_max, humidity, uv_index)
-    # 确保至少有3条，不足则补默认
+    # 4. 贴心提示
+    tips = get_tips(
+        weather['textDay'],
+        weather['textNight'],
+        weather['tempMax'],
+        weather['humidity'],
+        weather['uvIndex']
+    )
     while len(tips) < 3:
         tips.append("宝宝，今天也要加油哦！")
     
@@ -172,16 +161,16 @@ def main():
         "love_days": {"value": love_days},
         "meet_days": {"value": meet_days},
         "birthday_left": {"value": birthday_left},
-        "city": {"value": city_name},
-        "fxDate": {"value": fx_date},
-        "moonPhase": {"value": moon_phase},
-        "tempMax": {"value": temp_max},
-        "tempMin": {"value": temp_min},
-        "textDay": {"value": text_day},
-        "textNight": {"value": text_night},
-        "windScaleDay": {"value": wind_scale},
-        "uvIndex": {"value": uv_index},
-        "humidity": {"value": humidity},
+        "city": {"value": "广州市黄埔区"},
+        "fxDate": {"value": weather['fxDate']},
+        "moonPhase": {"value": weather['moonPhase']},
+        "tempMax": {"value": weather['tempMax']},
+        "tempMin": {"value": weather['tempMin']},
+        "textDay": {"value": weather['textDay']},
+        "textNight": {"value": weather['textNight']},
+        "windScaleDay": {"value": weather['windScaleDay']},
+        "uvIndex": {"value": weather['uvIndex']},
+        "humidity": {"value": weather['humidity']},
         "tips0": {"value": tips[0]},
         "tips1": {"value": tips[1]},
         "tips2": {"value": tips[2]},
