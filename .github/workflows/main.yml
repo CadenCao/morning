@@ -1,7 +1,7 @@
 name: morning
 on:
   schedule:
-    - cron: '30 14 * * *'
+    - cron: '00 15 * * *'
   workflow_dispatch:
 
 jobs:
@@ -20,17 +20,4 @@ jobs:
         with:
           python-version: '3.x'
           architecture: 'x64'
-
-      - name: run script
-        run: pip install -r ./requirements.txt && python ./main.py
-        env:   # 👈 必须和 run 对齐，不能放在外面
-          APP_ID: ${{ secrets.APP_ID }}
-          APP_SECRET: ${{ secrets.APP_SECRET }}
-          TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
-          USER_ID1: ${{ secrets.USER_ID1 }}
-          USER_ID2: ${{ secrets.USER_ID2 }}
-          WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
-          START_DATE: ${{ secrets.START_DATE }}
-          MEET_DATE: ${{ secrets.MEET_DATE }}
-          BIRTHDAY: ${{ secrets.BIRTHDAY }}
-          CITY_CODE: ${{ secrets.CITY_CODE }}
+      - run: pip install -r ./requirements.txt && python ./main.py
